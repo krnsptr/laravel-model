@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "519e3d0492d96f1ada7996e2a8f9035a",
+    "content-hash": "2d25fce15d4ecec095152e87e7619e08",
     "packages": [
         {
             "name": "brick/math",
@@ -6212,6 +6212,66 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
             },
             "time": "2021-10-02T14:08:47+00:00"
+        },
+        {
+            "name": "phpro/grumphp-shim",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpro/grumphp-shim.git",
+                "reference": "14d62e7ba488671f9ea3e0723eec2bb498c21c46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/14d62e7ba488671f9ea3e0723eec2bb498c21c46",
+                "reference": "14d62e7ba488671f9ea3e0723eec2bb498c21c46",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "~1.0 || ~2.0",
+                "ext-json": "*",
+                "php": "^7.3 || ^8.0"
+            },
+            "replace": {
+                "phpro/grumphp": "self.version"
+            },
+            "require-dev": {
+                "humbug/box": "^3.12.2",
+                "jetbrains/phpstorm-stubs": "dev-master@dev"
+            },
+            "bin": [
+                "grumphp",
+                "grumphp.phar"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "GrumPHP\\Composer\\GrumPHPPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrumPHP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toon Verwerft",
+                    "email": "toon.verwerft@phpro.be"
+                },
+                {
+                    "name": "Community",
+                    "homepage": "https://github.com/phpro/grumphp/graphs/contributors"
+                }
+            ],
+            "description": "GrumPHP Phar distribution",
+            "support": {
+                "issues": "https://github.com/phpro/grumphp-shim/issues",
+                "source": "https://github.com/phpro/grumphp-shim/tree/v1.5.0"
+            },
+            "time": "2021-09-24T10:18:42+00:00"
         },
         {
             "name": "phpspec/prophecy",
