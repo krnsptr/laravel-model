@@ -3,6 +3,7 @@
 namespace Krnsptr\LaravelModel;
 
 use Based\Fluent\Fluent;
+use Deiucanta\Smart\Field;
 use Deiucanta\Smart\SmartModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator as ValidatorFacade;
@@ -36,13 +37,22 @@ class LaravelModel extends Model
         return [];
     }
 
+    protected function getLabels(): array
+    {
+        $smartFieldLabels = $this->getSmartFields()->map(function (Field $field) {
+            return $field->label;
+        })->toArray();
+
+        return array_merge($smartFieldLabels, $this->fieldLabels);
+    }
+
     public function getValidator(): Validator
     {
         return ValidatorFacade::make(
             $this->getData(),
             $this->getRules(),
             [],
-            $this->fieldLabels,
+            $this->getLabels(),
         );
     }
 
