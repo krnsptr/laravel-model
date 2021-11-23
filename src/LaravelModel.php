@@ -46,6 +46,38 @@ class LaravelModel extends Model
         return array_merge($smartFieldLabels, $this->fieldLabels);
     }
 
+    protected function getValidatorData($skip = [])
+    {
+        $values = $rules = $labels = [];
+        $fields = $this->getSmartFields();
+
+        foreach ($fields as $key => $field) {
+            if (in_array($key, $skip)) {
+                continue;
+            }
+
+            if ($field->validateRawValue && !isset($this->rawAttributes[$key])) {
+                continue;
+            }
+
+            $fieldRules = $field->getValidationRules($this);
+
+            if (count($fieldRules) === 0) {
+                continue;
+            }
+
+            $rules[$key] = $fieldRules;
+
+            $values[$key] = isset($this->rawAttributes[$key])
+                ? $this->rawAttributes[$key]
+                : ($this->getData()[$key] ?? $this->getAttribute($key));
+
+            $labels[$key] = isset($field->label) ? $field->label : $key;
+        }
+
+        return compact('values', 'rules', 'labels');
+    }
+
     public function getValidator(): Validator
     {
         return ValidatorFacade::make(
