@@ -20,7 +20,8 @@
         "based/laravel-fluent": "^0.0.6",
         "illuminate/database": "^8.0",
         "illuminate/support": "^8.0",
-        "illuminate/validation": "^8.0"
+        "illuminate/validation": "^8.0",
+        "krnsptr/laravel-smart": "dev-master"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -55,6 +56,12 @@
             "Krnsptr\\LaravelModel\\Tests\\": "tests"
         }
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/krnsptr/laravel-smart.git"
+        }
+    ],
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
