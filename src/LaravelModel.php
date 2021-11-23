@@ -2,12 +2,15 @@
 
 namespace Krnsptr\LaravelModel;
 
+use Based\Fluent\Fluent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator as ValidatorFacade;
 use Illuminate\Validation\Validator;
 
 class LaravelModel extends Model
 {
+    use Fluent;
+
     public ?string $modelLabel;
 
     protected array $fieldLabels = [
