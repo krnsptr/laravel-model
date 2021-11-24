@@ -16,9 +16,9 @@ class LaravelModel extends Model
         SmartModel::setAttribute as smartModelSetAttribute;
     }
 
-    public ?string $modelLabel;
+    public $modelLabel = null;
 
-    protected array $fieldLabels = [
+    public $fieldLabels = [
         'id' => 'ID',
     ];
 
