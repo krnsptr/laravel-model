@@ -13,7 +13,7 @@ class LaravelModel extends Model
 {
     use Fluent;
     use SmartModel {
-        SmartModel::setAttribute as smartModelSetAttribute;
+        SmartModel::setAttribute as smartModelSetAttribute; // phpcs:ignore
     }
 
     public $modelLabel = null;
