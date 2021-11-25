@@ -2,7 +2,6 @@
 
 namespace Krnsptr\LaravelModel;
 
-use Based\Fluent\Fluent;
 use Deiucanta\Smart\Field;
 use Deiucanta\Smart\SmartModel;
 use Illuminate\Database\Eloquent\Model;
@@ -11,10 +10,7 @@ use Illuminate\Validation\Validator;
 
 class LaravelModel extends Model
 {
-    use Fluent;
-    use SmartModel {
-        SmartModel::setAttribute as smartModelSetAttribute; // phpcs:ignore
-    }
+    use SmartModel;
 
     public $modelLabel = null;
 
@@ -56,30 +52,6 @@ class LaravelModel extends Model
             [],
             $this->getLabels(),
         );
-    }
-
-    /**
-     * Overload the method to populate public properties from Model attributes
-     * Set a given attribute on the model.
-     *
-     * @param  mixed  $key
-     * @param  mixed  $value
-     * @return $this
-     */
-    public function setAttribute($key, $value)
-    {
-        // Tricky part to prevent attribute overwriting by mergeAttributesFromClassCasts
-        if ($this->hasFluentProperty($key)) {
-            unset($this->{$key});
-        }
-
-        $this->smartModelSetAttribute($key, $value);
-
-        if ($this->hasFluentProperty($key)) {
-            $this->{$key} = $this->getAttribute($key);
-        }
-
-        return $this;
     }
 
     public function save(array $options = []): bool
