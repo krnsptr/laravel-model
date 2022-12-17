@@ -27,7 +27,7 @@ class LaravelModel extends Model
 
     protected function getData(): array
     {
-        return $this->getAttributes();
+        return $this->attributes;
     }
 
     protected function getRules(): array
